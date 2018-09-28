@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var parser, xmlDoc;
+var text = "<div class='entry_body'><p>前回の <a href='http://honttoni.blog74.fc2.com/blog-entry-6.html' target='_blank'>[2] タイトル（title要素）を設定しよう</a> では、&lt;title&gt; &lt;head&gt; &lt;body&gt; を追加して、だんだん HTML文書らしくなってきました。<br>今回はさらに「文書型宣言」を追加しましょう。</p><table class='column-yellow'><tbody><tr><th scope='row'>使用する記述</th><td><code>&lt;!DOCTYPE html&gt;</code></td></tr></tbody></table><h2 class='bodyttl'>HTMLの文書型宣言をしよう</h2><p>&lt;!DOCTYPE 〜 &gt;で始まる<strong>「文書型宣言（document type declaration）」</strong>は、<b>W3C</b>によって推奨されています。</p><p class='small'><b><a href='http://www.w3.org/' target='_blank'>W3C (World Wide Web Consortium) </a>とは</b><br>WWW (World Wide Web) で利用される技術の標準化を促進する団体。企業・学術団体・個人が集まって1994年に発足。<br>それ以前は各ブラウザのメーカーがそれぞれ独自に「仕様」を決めていたので「あのブラウザでは見れるのに、このブラウザじゃ見れない...」といったユーザの不利益が生まれました。そんな状態を打開するために設立されたのが W3C。<br>各ブラウザは W3Cの仕様に従っています。ですので 書く方も W3C推奨の書き方をするんです。</p></div>";
+
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(text,"text/xml");
+
+document.getElementById("demo").innerHTML =
+xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+</script>
+
+</body>
+</html>
